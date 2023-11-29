@@ -4,19 +4,28 @@ document.querySelector(idElementoAudio).play();
 }
 const listadeteclas = document.querySelectorAll('.tecla');
 
-let contador = 0;
+for (let contador = 0; contador <listadeteclas.length; contador++) {
 
-while(contador <listadeteclas.length){
+}
+
+
     const tecla = listadeteclas[contador];
     const instrumentos = tecla.classlist[1];
-    //template string
-    const idAudio = `#som_${instrumento}`;
+    const idAudio = `#som_${instrumento}`; //template string
     console.log(idAudio)
 
     tecla.onclick = function () {
         tocaSom(idAudio)
     };
-    contador = contador + 1;
-
-    console.log(contador);
+    
+tecla.onkeydown = function (evento) {
+    console.log(evento.code =='space')
+    if (evento.code =='space'){
+        tecla.classList.add('ativa'); 
+    }
+    
 }
+
+ tecla.onkeyup = function () {
+    tecla.classList.remove('ativa');
+ }
